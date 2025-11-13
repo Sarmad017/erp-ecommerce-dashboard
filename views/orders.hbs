@@ -1,0 +1,29 @@
+<section>
+  <h2>Orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Sync</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+        <tr>
+          <td><a href="/orders/{{id}}">{{id}}</a></td>
+          <td>{{customer}}</td>
+          <td>${{total}}</td>
+          <td>{{status}}</td>
+          <td>
+            <button class="sync-btn" data-order-id="{{id}}">
+              Sync to ERP
+            </button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>
