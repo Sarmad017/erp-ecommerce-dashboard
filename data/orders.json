@@ -1,0 +1,84 @@
+[
+  {
+    "id": 101,
+    "customer": "Alice",
+    "total": 120.5,
+    "status": "Pending",
+    "items": [
+      {
+        "sku": "SKU-001",
+        "name": "T-Shirt",
+        "qty": 2,
+        "price": 20
+      },
+      {
+        "sku": "SKU-002",
+        "name": "Jeans",
+        "qty": 1,
+        "price": 80.5
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "customer": "Bob",
+    "total": 75,
+    "status": "Synced",
+    "items": [
+      {
+        "sku": "SKU-003",
+        "name": "Hoodie",
+        "qty": 1,
+        "price": 50
+      },
+      {
+        "sku": "SKU-004",
+        "name": "Cap",
+        "qty": 1,
+        "price": 25
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "status": "Pending",
+    "customer": "Demo Customer",
+    "total": 42.5,
+    "items": [
+      {
+        "sku": "SKU-DEMO",
+        "name": "Demo Item",
+        "qty": 1,
+        "price": 42.5
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "status": "Pending",
+    "customer": "Demo Customer",
+    "total": 42.5,
+    "items": [
+      {
+        "sku": "SKU-DEMO",
+        "name": "Demo Item",
+        "qty": 1,
+        "price": 42.5
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "status": "Synced",
+    "customer": "Demo Customer",
+    "total": 42.5,
+    "items": [
+      {
+        "sku": "SKU-DEMO",
+        "name": "Demo Item",
+        "qty": 1,
+        "price": 42.5
+      }
+    ]
+  }
+]

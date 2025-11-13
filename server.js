@@ -1,3 +1,4 @@
+const orderStore = require("./utils/orderStore");
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -31,30 +32,27 @@ app.use("/api/erp", erpApiRouter);
 
 // Server-side rendered pages
 app.get("/", async (req, res) => {
-  // In real life you'd fetch orders from ERP or shop API
-  const mockOrders = [
-    { id: 101, customer: "Alice", total: 120.5, status: "Pending" },
-    { id: 102, customer: "Bob", total: 75.0, status: "Synced" }
-  ];
-
-  res.render("orders", { title: "Order Dashboard", orders: mockOrders });
+  try {
+    const orders = await orderStore.getAllOrders();
+    res.render("orders", { title: "Order Dashboard", orders });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error loading orders");
+  }
 });
 
 app.get("/orders/:id", async (req, res) => {
-  const orderId = req.params.id;
-  // Mock order detail
-  const order = {
-    id: orderId,
-    customer: "Alice",
-    total: 120.5,
-    items: [
-      { sku: "SKU-001", name: "T-Shirt", qty: 2, price: 20 },
-      { sku: "SKU-002", name: "Jeans", qty: 1, price: 80.5 }
-    ],
-    status: "Pending"
-  };
-
-  res.render("order-detail", { title: `Order #${order.id}`, order });
+  try {
+    const orderId = req.params.id;
+    const order = await orderStore.getOrderById(orderId);
+    if (!order) {
+      return res.status(404).send("Order not found");
+    }
+    res.render("order-detail", { title: `Order #${order.id}`, order });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error loading order");
+  }
 });
 
 app.listen(PORT, () => {
